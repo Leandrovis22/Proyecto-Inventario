@@ -12,21 +12,28 @@ function App() {
 }
 
 export default App;*/
-import Home from './pages/home'
-import Header from './components/header'
-import Footer from './components/footer'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/home';
+import ProductHome from './pages/ProductHome';
+import Header from './components/header';
+import Footer from './components/footer';
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow pt-20"> {/* Added pt-20 to create space for fixed header */}
-        <Home />
-      </main>
-      <Footer />
-    </div>
-  )
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow pt-32"> {/* Aumentado de pt-20 a pt-32 */}
+          <Routes>
+            <Route path="/" element={<ProductHome />} />
+            <Route path="/dashboard" element={<Home />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
 
